@@ -3,7 +3,7 @@
 * I am using [DVC](https://dvc.org/doc/start/data-and-model-versioning) to store and update the data
     * Note that you can *easily* add GDrive as your main data repo if the Dagshub solution below doesn't work out
 
-* [Dagshub] is a place that hosts both code and data through `git` and `dvc` respectively
+* [Dagshub](https://dagshub.com/) is a place that hosts both code and data through `git` and `dvc` respectively
     * I am happy to support them and give them feedback, but they are a small company so I would like some coverage that my notebooks are also stored on github.
     * Adding a **second** report to pull and fetch is described [here](https://jigarius.com/blog/multiple-git-remote-repositories)
 
