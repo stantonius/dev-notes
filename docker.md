@@ -124,5 +124,33 @@ ENV JUPYTER_RUNTIME_DIR=/tmp
 See [this great answer](https://www.digitalocean.com/community/questions/how-to-fix-docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket) if you run up against a permission error in Linux
 
 
+## Custom (Derivative) Image for GCP
 
+Follow [these instructions](https://cloud.google.com/ai-platform/deep-learning-containers/docs/derivative-container) by Google on creating a derivative container. Note they recommend copying one of their images and making modifications
 
+### Sample GCP Modified Container
+
+Dockerfile for derivative container
+```
+# Pytorch 1.8
+FROM gcr.io/deeplearning-platform-release/pytorch-gpu
+
+RUN pip install -U jupyterlab
+
+RUN useradd -ms /bin/bash craig
+
+RUN chmod -R 777 /home
+
+USER craig
+
+WORKDIR /home/jupyter
+
+```
+
+Once the above Dockerfile is created, need to run the below to have access to a `gcr` link for custom image setup
+
+```
+docker build . -f Dockerfile.example -t "gcr.io/{PROJECT-ID}/{CONTAINER-NAME}:latest"
+docker push "gcr.io/{PROJECT-ID}/{CONTAINER-NAME}:latest"
+```
+So far this seems to work
