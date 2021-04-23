@@ -154,3 +154,34 @@ docker build . -f Dockerfile.example -t "gcr.io/{PROJECT-ID}/{CONTAINER-NAME}:la
 docker push "gcr.io/{PROJECT-ID}/{CONTAINER-NAME}:latest"
 ```
 So far this seems to work
+
+## Python Development Environment
+
+As part of the OpenMined course I am doing, I need a dev environment. Unfortunately the new M1 Macbook isn't too friendly yet to certain packages, and so a Docker development environment is a decent choise since Docker Desktop is in GA for ARM-based chips.
+
+According to [this post](https://pythonspeed.com/articles/base-image-python-docker-images/), all we need is the offical Python image as the base - the rest is overkill (we don't need a full Linux operating system, and we don't need a tonne of packes installed).
+
+The initial Dockerfile for this image is the following:
+
+```
+FROM python:3.9.4-slim
+
+RUN apt-get update \
+&& apt-get install gcc -y \
+&& apt-get clean \
+&& apt-get install -y build-essential \
+&& apt-get -y install git
+
+RUN apt install -y libavdevice-dev libavfilter-dev libopus-dev libvpx-dev pkg-config libsrtp2-dev
+
+RUN git clone https://github.com/OpenMined/courses.git --branch foundations-of-private-computation --single-branch
+
+RUN pip install -r courses/requirements.txt
+```
+As you can see, we use the offical Python image, a few standard updates (including **installing git** - notice the `-y` flag), fetching the Openmined library and installing the packages from `requirements.txt`.
+
+After creating this Dockerfile (via `touch Dockerfile` or `vim Dockerfile`), we:
+1. Run `docker build -t openmined .`
+2. Enter `docker run -it -d -p 5000:5000 openmined`
+   * Note the flags are all key here, including specifying the port
+3. 
