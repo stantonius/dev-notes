@@ -11,3 +11,8 @@
 
 * Add [`jupyterlab-git`](https://github.com/jupyterlab/jupyterlab-git) to JupyterLab. However you **need to be careful of version mismatching** - you will probably need to **downgrade** the python package so that it matches the UI version
     * I had to use this command `pip install --pre jupyterlab-git==0.30.0b2`
+
+
+Made a mistake? Notebook wasn't cleaned?
+
+* `git reset --hard HEAD`
