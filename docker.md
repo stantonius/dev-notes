@@ -184,4 +184,7 @@ After creating this Dockerfile (via `touch Dockerfile` or `vim Dockerfile`), we:
 1. Run `docker build -t openmined .`
 2. Enter `docker run -it -d -p 5000:5000 openmined`
    * Note the flags are all key here, including specifying the port
-3. 
+3. Run 
+
+**Need to update this with the fact we use `CMD` to trigger jupyter lab startup**
+**Also need to recognise that the port number in the docker container is the one that communicates with the port on the host machine - therefore if the ports are different, you must use the local host machine port to access the container**
