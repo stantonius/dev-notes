@@ -89,6 +89,13 @@ To create an environment using a requirements text file:
 
 `conda create --name <env> --file requirements.txt`
 
+However note that this format isnt right for pip. If you want to prepare the text file for pip use, run the following:
+
+`pip freeze > requirements.txt`
+
+And then to install with pip:
+`pip install -r requirements.txt`
+
 ## The Actual Cheetsheet
 
 [Here](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)
