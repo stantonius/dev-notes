@@ -81,6 +81,14 @@ The next phase of Jupyter notebooks. Need to install with the following code `co
 
 * `conda env remove -n newEnv`
 
+## Saving Conda Requirements
+
+`conda list -e > requirements.txt`
+
+To create an environment using a requirements text file:
+
+`conda create --name <env> --file requirements.txt`
+
 ## The Actual Cheetsheet
 
 [Here](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf)
