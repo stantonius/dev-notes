@@ -35,9 +35,17 @@ where USERNAME is the username on the *target* machine. IP address is also of th
 
 You need to **link the ports on the host and target machines**. You do this **when connecting via ssh**:
 
-`ssh username@xx.xx.xx.xx -NL 1234:localhost:1234`
+`ssh username@xx.xx.xx.xx -L 1234:localhost:1234`
 
-The `-NL 1234:localhost:1234` is the key here
+The `-L 1234:localhost:1234` is the key here. I read that you should actually use `-NL` instead of `-L` for security purposes but this wasn't working for me.
+
+Once connected, to open a notebook you must run:
+
+`jupyter notebook --no-browser --port=1234`
+
+Then the notebook should be available on:
+
+`http://localhost:8080/` 
 
 
 ## General
