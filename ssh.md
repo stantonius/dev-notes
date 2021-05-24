@@ -41,7 +41,7 @@ The `-L 1234:localhost:1234` is the key here. I read that you should actually us
 
 Once connected, to open a notebook you must run:
 
-`jupyter notebook --no-browser --port=1234`
+`jupyter lab --no-browser --port=1234`
 
 Then the notebook should be available on:
 
